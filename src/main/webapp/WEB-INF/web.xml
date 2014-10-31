@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	
+
+	<!-- 配置log4j配置文件的路径，可以是xml或 properties文件（此参数必须配）-->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j.properties</param-value>
+	</context-param>
+
+	<!-- 每隔多少毫秒扫描一下配置文件的变化（此参数可选配） -->
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>60000</param-value>
+	</context-param>
+	
+	<!--Log4j配置 在同一容器中部署多个应用不能使用默认的webAppRootKey,必须指定唯一KEY,以免冲突-->
+	<context-param>
+    <param-name>webAppRootKey</param-name>
+    <param-value>ssh2.root</param-value>
+     <!--在log4j.properties中设置日志路径log4j.appender.file.File=${itservice.root}/WEB-INF/itservice.log-->
+	</context-param>
+
+
+
+	<filter>
+		<filter-name>Filter</filter-name>
+		<filter-class>
+			com.dream.core.filter.EncodingFilter
+			<!-- spring提供的过滤器类org.springframework.web.filter.CharacterEncodingFilter -->
+		</filter-class>
+		<init-param>
+			<param-name>Encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<filter>
+		<filter-name>openSessionInView</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactory</param-value>
+		</init-param>
+	</filter>
+	<!--
+		http://www.cnblogs.com/children/archive/2010/05/01/1725419.html
+		1）如果使用了OpenSessionInView模式，那么Spring会帮助你管理Session的开和关，
+		从而你在你的DAO中通过HibernateDaoSupport拿到的getSession()方法，都是绑定到当前线程的线程安全的Session，
+		即拿即用，最后会由Filter统一关闭。
+		2）由于拿到的Hibernate的Session被设置了session.setFlushMode(FlushMode.NEVER);
+		所以，除非你直接调用session.flush()，否则Hibernate session无论何时也不会flush任何的状态变化到数据库。
+		因此，数据库事务的配置非常重要。（我们知道，在调用org.hibernate.Transaction.commit()的时候会触发session.flush()）
+		我曾经见过很多人在使用OpenSessionInView模式时，都因为没有正确配置事务，
+		导致了底层会抛出有关FlushMode.NEVER的异常。
+	-->
+	<filter-mapping>
+		<filter-name>openSessionInView</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 讲sessionfactory初始化的工作交给了web服务器-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:application-*.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 
+	|	<listener>
+	|		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	|	</listener>
+	|	
+	|	HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+	|	System.out.println(request.getParameter("limit"));
+	|	System.out.println("***********"+request.getSession().getServletContext().getRealPath("/"));
+	 -->
+</web-app>

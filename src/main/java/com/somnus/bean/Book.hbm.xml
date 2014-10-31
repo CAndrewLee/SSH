@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.somnus.bean">
+
+	<class name="Book" table="t_book">
+		<id name="id">
+			<generator class="identity"/>
+		</id>
+		
+		<property name="bookname" column="bookname" not-null="true" type="java.lang.String"></property>
+		<property name="bookauthor" column="bookauthor" not-null="true" type="java.lang.String"></property>
+		<property name="bookprice" column="bookprice" not-null="true" type="java.lang.Float"></property>
+	</class>
+	
+</hibernate-mapping>

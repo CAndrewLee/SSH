@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="default" extends="struts-default">
+	
+		<action name="add" class="book" method="addBook">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+			
+		<action name="query" class="book" method="queryBook">
+			<result name="success">/edit.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="del" class="book" method="deleteBook">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>	
+			
+		<action name="update" class="book" method="updateBook">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>	
+				
+		<action name="list" class="book" method="listBook">
+			<result name="success">/list.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>		
+		
+	</package>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+</struts>

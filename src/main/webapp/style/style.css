@@ -1,0 +1,78 @@
+body {
+    font-family: Arial,Console,Verdana,Courier New;
+    font-size: 12px;
+}
+a {
+    color: #FF9900;
+    text-decoration: none;
+}
+table.table-report{
+		border-collapse:collapse;
+		width:100%;
+		border-spacing:0;
+}
+table.table-report th{
+	font-size:12px;
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	background:#EEE;
+	text-align:center;
+	height:30px;
+}
+table.table-report td{
+	height:30px;
+	border-bottom:1px solid #E2E2E2;
+	line-height:20px;
+	text-align:center;
+}
+.even{
+	background:#EEF6FF;
+}
+.odd{
+	background:#FFFFFF;
+}
+.selected{
+	background:#FBEC88;
+}
+
+.pagelist{
+	clear: both;
+    color: #666666;
+    font: 12px/24px Arial;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.pagelist strong {
+    background: none repeat scroll 0 0 #07519A;
+    border: medium none;
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: normal;
+    height: 24px;
+    line-height: 24px;
+    margin: 0 3px;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
+.pagelist a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DBE5EE;
+    color: #333333;
+    cursor: pointer;
+    display: inline-block;
+    font: 12px/22px Arial,Helvetica,sans-serif;
+    height: 22px;
+    margin: 0 2px;
+    padding: 0 8px;
+}
+.pagelist a:hover {
+    background: none repeat scroll 0 0 #07519a;
+    border: medium none;
+    color: #ffffff;
+    height: 24px;
+    line-height:24px;
+    margin: 0 3px;
+    text-decoration: none;
+}

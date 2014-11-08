@@ -3,8 +3,8 @@
   type="WEB"
   name="SSH Maven Webapp"
   id="myeclipse.1414804583484"
-  context-root="/SSH"
-  j2ee-spec="6.0"
+  context-root="/Somnus"
+  j2ee-spec="1.7"
   archive="SSH Maven Webapp.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />

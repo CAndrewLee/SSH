@@ -100,6 +100,12 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 
 		<!-- 加入druid数据源依赖包 -->
 		<dependency>
@@ -303,7 +309,7 @@
 			<version>2.3.15.3</version>
 		</dependency>
 		<!-- 可以看到struts2应用里的Action等各种资源的影射情况 -->
-		<!-- 可以使用类似http://localhost:9999/Somnus/config-browser/showConstants.sy的url来访问 -->
+		<!-- 可以使用类似http://localhost:9999/SSH/config-browser/showConstants.sy的url来访问 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-config-browser-plugin</artifactId>
@@ -313,80 +319,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>Somnus</finalName>
-
-		<plugins>
-			<!-- 编译的时候使用JDK7和UTF8编码 -->
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-
-			<!-- 将源码打成jar包 -->
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<configuration>
-					<attach>true</attach>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- 编译jar包 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
-
-			<!-- 配置Maven插件(mvn jetty:run可以运行项目) -->
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.1.0.RC1</version>
-				<configuration>
-					<!-- 指定访问端口 -->
-					<httpConnector>
-						<port>9999</port>
-					</httpConnector>
-					<!-- 间隔x扫描一次,实现热部署 -->
-					<scanIntervalSeconds>3</scanIntervalSeconds>
-					<!-- 编写类文件之后，是否自动重启jetty；可选后面两个值[manual|automatic] -->
-					<reload>manual</reload>
-					<!-- 指定关闭端口 -->
-					<stopPort>9998</stopPort>
-					<stopKey>stop-jetty-for-it</stopKey>
-					<webApp>
-						<!-- 指定项目路径(如果不写，则按照pom.xml里面的artifactId属性值配置)，访问路径为http://localhost:9999/oa -->
-						<!-- 配置<contextPath>/Somnus</contextPath>，则访问路径为http://localhost:9999/oa -->
-						<!-- 配置<contextPath>/</contextPath>，则访问路径为http://localhost:9999 -->
-						<contextPath>/Somnus</contextPath>
-						<!-- 更改jetty默认webdefault.xml文件，主要修改了useFileMappedBuffer属性为false，使其不锁定静态文件 -->
-						<!-- 此文件在C盘\用户目录\.m2\repository\org\eclipse\jetty\jetty-webapp\9.1.0.RC1\找到jar包，打开jar包目录org\eclipse\jetty\webapp\目录中 -->
-						<defaultsDescriptor>webdefault.xml</defaultsDescriptor>
-					</webApp>
-				</configuration>
-			</plugin>
-
-		</plugins>
+		<finalName>SSH</finalName>
 	</build>
 
 </project>

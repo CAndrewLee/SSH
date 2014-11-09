@@ -32,10 +32,7 @@
 
 	<filter>
 		<filter-name>Filter</filter-name>
-		<filter-class>
-			com.dream.core.filter.EncodingFilter
-			<!-- spring提供的过滤器类org.springframework.web.filter.CharacterEncodingFilter -->
-		</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
 			<param-name>Encoding</param-name>
 			<param-value>UTF-8</param-value>

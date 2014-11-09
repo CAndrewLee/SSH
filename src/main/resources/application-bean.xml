@@ -35,7 +35,6 @@
 
 	<bean name="book" class="com.somnus.action.BookAction" scope="prototype">
 		<property name="bookService" ref="bookService"></property>
-		<!-- <property name="bookMongoService" ref="bookMongoService"></property> -->
 	</bean>
 	
 	<!-- ##################Scheduler定时###################### -->

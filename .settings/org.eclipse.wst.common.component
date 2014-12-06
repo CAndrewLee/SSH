@@ -2,8 +2,9 @@
     <wb-module deploy-name="SSH">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <property name="java-output-path" value="/SSH Maven Webapp/src/main/webapp/src/main/java"/>
-        <property name="context-root" value="/Somnus"/>
+        <property name="context-root" value="SSH"/>
     </wb-module>
 </project-modules>

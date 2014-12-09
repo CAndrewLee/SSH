@@ -12,7 +12,7 @@ import com.somnus.core.exception.SystemException;
 /**
  * 通用DAO的实现类，采用Hibernate方式实现
  * 
- * @author liuyh
+ * @author liuruo
  * 
  */
 public class BaseHibernateDaoImpl<T>  implements BaseHibernateDao<T>

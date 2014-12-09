@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 通用DAO，用于对象的持久化、查询（分页）
  * 
- * @author liuyh 
+ * @author liuruo
  */
 public interface BaseHibernateDao<T>
 {
